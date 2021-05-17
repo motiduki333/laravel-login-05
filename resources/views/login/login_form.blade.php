@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>login</title>
     <script src="{{ asset('/js/app.js') }}"defer></script>
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 </head>
@@ -15,17 +15,25 @@
 
 
   <form  class="form-signin" method="POST" action="{{route('login')}}">
-    @csrf
+     @csrf
+  
     <h1 class="h3 mb-3 fw-normal">ログインフォーム</h1>
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
+   
+    
             @foreach ($errors->all() as $error)
+            <ul class="alert alert-danger">
+        
                 <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
+                </ul>          
+                  @endforeach
+             
+    
+
+
+
+<x-alert type="danger" :session="session('danger')"/>
+
     <label for="inputEmail" class="visually-hidden">Email address</label>
     <input type="email" id="inputEmail" name="email"class="form-control" placeholder="Email address" required autofocus>
     <label for="inputPassword" class="visually-hidden">Password</label>
